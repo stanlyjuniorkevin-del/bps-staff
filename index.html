@@ -4,82 +4,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BPS | Staff Management</title>
+<title>BPS Staff Management</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-html{scroll-behavior:smooth}
-body{background:#06130d;color:white;min-height:100vh}
-.glow{position:fixed;width:500px;height:500px;border-radius:50%;
-filter:blur(150px);opacity:.35;pointer-events:none;z-index:-1}
-.g1{background:#00ff77;top:-250px;left:-150px}
-.g2{background:#008f45;right:-200px;bottom:-200px}
-header{display:flex;justify-content:space-between;align-items:center;
-padding:25px 8%;position:relative;z-index:5}
-.logo{font-size:23px;font-weight:bold;letter-spacing:2px}
+body{background:#06130c;color:white;min-height:100vh}
+button{cursor:pointer;font-weight:bold}
+.glow{position:fixed;width:400px;height:400px;border-radius:50%;filter:blur(130px);opacity:.25;z-index:-1;pointer-events:none}
+.g1{background:#00ff80;top:-200px;left:-100px}
+.g2{background:#008b45;right:-150px;bottom:-200px}
+header{padding:25px 8%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-size:24px;font-weight:bold;letter-spacing:2px}
 .logo span{color:#00e676}
-nav{display:flex;align-items:center;gap:30px}
+nav{display:flex;gap:25px;align-items:center}
 nav a{color:#ddd;text-decoration:none;font-size:14px}
 nav a:hover{color:#00e676}
-button{cursor:pointer;border:none;font-weight:bold}
-.outline{padding:12px 25px;border:1px solid #00e676;border-radius:30px;
-background:transparent;color:white}
-.outline:hover,.primary:hover{background:#00e676;color:#001b0c}
-.primary{padding:13px 25px;border-radius:8px;background:#00c968;color:#001b0c}
-.hero{min-height:78vh;display:flex;align-items:center;padding:70px 10%}
+button.primary{background:#00d66b;color:#03200e;border:0;padding:13px 23px;border-radius:7px}
+button.primary:hover{background:#00ff80}
+button.outline{background:transparent;color:white;border:1px solid #00e676;padding:11px 22px;border-radius:25px}
+button.outline:hover{background:#00e676;color:#001a0b}
+.hero{min-height:75vh;padding:70px 10%;display:flex;align-items:center}
 .hero-content{max-width:650px}
 .tag{color:#00e676;letter-spacing:4px;font-size:13px;margin-bottom:20px}
-h1{font-size:65px;letter-spacing:3px;margin-bottom:10px}
-h2{font-size:27px;font-weight:400;margin-bottom:25px}
-p{color:#bdc9c0;line-height:1.8}
-.hero p{max-width:500px;margin-bottom:30px}
-section:not(.hero){padding:80px 10%;min-height:45vh}
-.section-title{text-align:center;margin-bottom:40px;font-size:35px}
+h1{font-size:65px;letter-spacing:3px;margin-bottom:12px}
+.hero h2{font-size:27px;font-weight:400;margin-bottom:22px}
+p{color:#b8c9bd;line-height:1.8}
+.hero p{max-width:510px;margin-bottom:30px}
+section.info{padding:80px 10%}
+.section-title{text-align:center;font-size:35px;margin-bottom:35px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px}
-.card,.panel{background:rgba(15,35,24,.88);border:1px solid #204b32;
-border-radius:13px;padding:25px}
-.card h3{margin-bottom:12px;color:#00e676}
+.card,.panel{background:#102319;border:1px solid #254c34;border-radius:12px;padding:24px}
+.card h3,.panel h3{color:#00e676;margin-bottom:12px}
 .card p{font-size:14px}
-#app{display:none;padding:35px 7%;min-height:80vh}
-.app-header{display:flex;justify-content:space-between;align-items:center;
-gap:15px;flex-wrap:wrap;margin-bottom:30px}
+footer{text-align:center;padding:25px;color:#809488;border-top:1px solid #23412e}
+#app{display:none;padding:30px 7%;min-height:80vh}
+.app-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;margin-bottom:30px}
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:25px}
-.tab{background:#13291b;color:white;padding:12px 17px;border-radius:7px}
-.tab.active{background:#00c968;color:#001b0c}
-.panel{margin-bottom:20px}
-.panel h3{margin-bottom:18px;color:#00e676}
-input{background:#091b11;border:1px solid #31563d;color:white;
-padding:13px;border-radius:7px;width:100%;margin:8px 0 15px}
-label{font-size:13px;color:#cbd8ce}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
-.stat{background:#10291a;border:1px solid #285438;padding:20px;border-radius:10px}
-.stat strong{display:block;font-size:30px;color:#00e676;margin-top:8px}
-table{width:100%;border-collapse:collapse;min-width:550px}
-th,td{text-align:left;padding:14px;border-bottom:1px solid #294332;font-size:13px}
-th{color:#00e676}
+.tab{background:#142b1d;color:white;padding:12px 17px;border:1px solid #31523b;border-radius:7px}
+.tab.active{background:#00d66b;color:#001b0b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px;margin-bottom:25px}
+.stat{background:#102b1b;padding:22px;border:1px solid #275238;border-radius:10px;color:#c4d4c9}
+.stat strong{display:block;font-size:32px;color:#00e676;margin-top:12px}
+input,select{display:block;width:100%;padding:13px;margin:9px 0 17px;background:#091b11;color:white;border:1px solid #355440;border-radius:7px}
+label{font-size:13px;color:#c5d5c9}
 .table-wrap{overflow-x:auto}
-.small{padding:8px 12px;border-radius:6px;margin:3px;background:#245337;color:white}
-.danger{background:#6b2424}
+table{width:100%;min-width:550px;border-collapse:collapse}
+td,th{text-align:left;padding:14px;border-bottom:1px solid #294632;font-size:13px}
+th{color:#00e676}
+.small{background:#285d3b;color:white;border:0;padding:8px 11px;border-radius:5px;margin:3px}
+.danger{background:#762e2e}
 .hidden{display:none!important}
-#message{margin-top:15px;color:#00e676;font-size:14px}
-footer{text-align:center;padding:30px;color:#87988c;border-top:1px solid #203d2b}
-.modal{position:fixed;inset:0;background:#000c;display:none;
-justify-content:center;align-items:center;padding:20px;z-index:20}
-.modal-box{background:#10291a;border:1px solid #00e676;padding:30px;
-border-radius:15px;width:100%;max-width:420px}
+.modal{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal-box{background:#10251a;border:1px solid #00e676;border-radius:14px;padding:30px;width:100%;max-width:400px}
 .modal-box h2{margin-bottom:20px}
-@media(max-width:750px){
-header{padding:20px 6%}
-nav{gap:12px;flex-wrap:wrap;justify-content:flex-end}
+#loginMessage,#generated{color:#00e676;margin-top:15px;font-size:14px}
+#generated{overflow-wrap:anywhere}
+@media(max-width:700px){
+header{padding:20px 6%;flex-wrap:wrap}
+nav{gap:13px;flex-wrap:wrap}
 nav a{font-size:12px}
 .hero{padding:60px 7%}
 h1{font-size:44px}
-h2{font-size:21px}
-section:not(.hero){padding:65px 7%}
-}
-@media(max-width:450px){
-header{align-items:flex-start;flex-direction:column;gap:18px}
-nav{justify-content:flex-start}
+.hero h2{font-size:21px}
+section.info{padding:60px 7%}
 }
 </style>
 </head>
@@ -93,7 +80,7 @@ nav{justify-content:flex-start}
  <div class="logo">BPS <span>GROUP</span></div>
  <nav>
   <a href="#home">Home</a>
-  <a href="#services">Features</a>
+  <a href="#features">Features</a>
   <a href="#about">About</a>
   <button class="outline" onclick="showLogin()">LOGIN</button>
  </nav>
@@ -105,67 +92,64 @@ nav{justify-content:flex-start}
   <h1>STAFF<br>MANAGEMENT</h1>
   <h2>Manage Smarter. Work Better.</h2>
   <p>
-   A modern staff management platform designed to organize
-   employees, manage access and simplify business operations.
-   Secure access through administrator-generated lifetime licenses.
+   A modern platform for managing staff, employee information
+   and access licenses. Organized management, simple operations
+   and lifetime license access.
   </p>
   <button class="primary" onclick="showLogin()">GET STARTED</button>
  </div>
 </section>
 
-<section id="services">
+<section class="info" id="features">
  <h2 class="section-title">Our Features</h2>
  <div class="cards">
-  <div class="card"><h3>Staff Management</h3>
-   <p>Organize and manage staff records in one place.</p></div>
-  <div class="card"><h3>License Keys</h3>
-   <p>Generate and control lifetime staff access licenses.</p></div>
-  <div class="card"><h3>Admin Dashboard</h3>
-   <p>Manage staff, access and license status.</p></div>
-  <div class="card"><h3>Secure Access</h3>
-   <p>Separate administrator and staff access.</p></div>
+  <div class="card"><h3>Staff Management</h3><p>Manage your staff records and employee information.</p></div>
+  <div class="card"><h3>License Management</h3><p>Generate lifetime license keys and manage their status.</p></div>
+  <div class="card"><h3>Admin Dashboard</h3><p>View staff, license statistics and system information.</p></div>
+  <div class="card"><h3>Staff Access</h3><p>Staff members can access their accounts using assigned licenses.</p></div>
  </div>
 </section>
 
-<section id="about">
- <h2 class="section-title">About BPS</h2>
- <p style="text-align:center">
-  BPS Staff Management is designed to make staff administration
-  simple, organized and efficient.
- </p>
+<section class="info" id="about">
+ <h2 class="section-title">About BPS GROUP</h2>
+ <p style="text-align:center">A modern staff management solution built to make administration simpler and more organized.</p>
 </section>
 
-<!-- LOGIN -->
+<footer>© 2026 BPS GROUP. All Rights Reserved.</footer>
 
+<!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
  <div class="modal-box">
-  <h2>Welcome to BPS</h2>
-  <label>Choose account type</label>
-  <select id="role" style="width:100%;padding:13px;background:#091b11;color:white;border:1px solid #31563d;border-radius:7px">
-   <option value="staff">Staff Login</option>
-   <option value="admin">Admin Demo Login</option>
+  <h2>BPS Login</h2>
+
+  <label>Account Type</label>
+  <select id="role" onchange="changeRole()">
+   <option value="admin">Super Admin</option>
+   <option value="staff">Staff Member</option>
   </select>
+
   <div id="adminFields">
-   <label>Admin password (demo only)</label>
-   <input id="adminPass" type="password" placeholder="Demo password">
+   <label>Admin Password</label>
+   <input type="password" id="adminPassword" placeholder="Enter admin password">
   </div>
+
   <div id="staffFields" class="hidden">
-   <label>Staff name</label>
-   <input id="staffName" placeholder="Enter your name">
-   <label>Lifetime license key</label>
+   <label>Staff Name</label>
+   <input id="staffName" placeholder="Your registered name">
+   <label>License Key</label>
    <input id="staffKey" placeholder="BPS-XXXX-XXXX-XXXX">
   </div>
+
   <button class="primary" style="width:100%" onclick="login()">LOGIN</button>
-  <button class="outline" style="width:100%;margin-top:10px" onclick="closeLogin()">CANCEL</button>
+  <button class="outline" style="width:100%;margin-top:12px" onclick="closeLogin()">CLOSE</button>
   <p id="loginMessage"></p>
  </div>
 </div>
 
 <!-- DASHBOARD -->
-
 <div id="app">
 
- <div class="app-header">
+ <div class="app-head">
   <div>
    <div class="tag">BPS MANAGEMENT PORTAL</div>
    <h2 id="welcome">Dashboard</h2>
@@ -173,13 +157,11 @@ nav{justify-content:flex-start}
   <button class="outline" onclick="logout()">LOG OUT</button>
  </div>
 
- <div class="tabs" id="tabs">
-  <button class="tab active" onclick="showTab('dashboard',this)">Dashboard</button>
+ <div class="tabs">
+  <button class="tab active" id="dashboardTab" onclick="showTab('dashboard',this)">Dashboard</button>
   <button class="tab" id="licenseTab" onclick="showTab('licenses',this)">License Keys</button>
   <button class="tab" id="staffTab" onclick="showTab('staff',this)">Staff</button>
  </div>
-
- <!-- DASHBOARD TAB -->
 
  <div id="dashboard" class="tab-content">
   <div class="grid">
@@ -187,45 +169,43 @@ nav{justify-content:flex-start}
    <div class="stat">Total Licenses<strong id="keyCount">0</strong></div>
    <div class="stat">Active Licenses<strong id="activeCount">0</strong></div>
   </div>
-  <div class="panel" style="margin-top:25px">
-   <h3>Welcome to BPS</h3>
-   <p>Use the dashboard to manage staff and lifetime license access.</p>
+  <div class="panel">
+   <h3>Welcome to BPS GROUP</h3>
+   <p id="dashboardMessage">Manage staff and licenses from your administrator dashboard.</p>
   </div>
  </div>
 
- <!-- LICENSE TAB -->
-
  <div id="licenses" class="tab-content hidden">
+
   <div class="panel" id="generatePanel">
    <h3>Generate Lifetime License</h3>
-   <label>Staff member name</label>
+   <label>Staff Member Name</label>
    <input id="newStaffName" placeholder="Enter staff name">
-   <button class="primary" onclick="generateKey()">GENERATE LICENSE KEY</button>
+   <button class="primary" onclick="generateKey()">GENERATE KEY</button>
    <p id="generated"></p>
   </div>
 
   <div class="panel">
-   <h3>License Management</h3>
+   <h3>License Key Management</h3>
    <div class="table-wrap">
     <table>
-     <thead>
-      <tr><th>License Key</th><th>Staff</th><th>Status</th><th>Actions</th></tr>
-     </thead>
+     <thead><tr><th>License Key</th><th>Staff Name</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
      <tbody id="licenseRows"></tbody>
     </table>
    </div>
   </div>
  </div>
 
- <!-- STAFF TAB -->
-
  <div id="staff" class="tab-content hidden">
   <div class="panel" id="addStaffPanel">
    <h3>Add Staff Member</h3>
+   <label>Full Name</label>
    <input id="addName" placeholder="Staff name">
+   <label>Position</label>
    <input id="addPosition" placeholder="Job position">
    <button class="primary" onclick="addStaff()">ADD STAFF</button>
   </div>
+
   <div class="panel">
    <h3>Staff Directory</h3>
    <div class="table-wrap">
@@ -236,65 +216,60 @@ nav{justify-content:flex-start}
    </div>
   </div>
  </div>
-
 </div>
 
-<footer>© 2026 BPS GROUP | Staff Management System</footer>
-
 <script>
-const getData = key => {
- try { return JSON.parse(localStorage.getItem(key)) || []; }
- catch { return []; }
-};
-
-const saveData = (key,data) =>
+// DEMO DATA STORAGE
+function read(key){
+ try{return JSON.parse(localStorage.getItem(key))||[]}
+ catch(e){return []}
+}
+function save(key,data){
  localStorage.setItem(key,JSON.stringify(data));
+}
 
-let licenses = getData("bps_licenses");
-let staff = getData("bps_staff");
-let currentRole = "";
+let licenses=read("bps_lifetime_licenses");
+let staff=read("bps_staff_records");
+let currentRole="";
 
 function showLogin(){
  document.getElementById("loginModal").style.display="flex";
 }
-
 function closeLogin(){
  document.getElementById("loginModal").style.display="none";
 }
-
-document.getElementById("role").addEventListener("change",function(){
- document.getElementById("adminFields").classList.toggle("hidden",this.value!=="admin");
- document.getElementById("staffFields").classList.toggle("hidden",this.value!=="staff");
+function changeRole(){
+ let role=document.getElementById("role").value;
+ document.getElementById("adminFields").classList.toggle("hidden",role!=="admin");
+ document.getElementById("staffFields").classList.toggle("hidden",role!=="staff");
  document.getElementById("loginMessage").innerText="";
-});
+}
 
 function login(){
- const role=document.getElementById("role").value;
+ let role=document.getElementById("role").value;
 
  if(role==="admin"){
-  // DEMO ONLY: Replace with server-side authentication.
-  if(document.getElementById("adminPass").value!=="BPSADMIN"){
-   document.getElementById("loginMessage").innerText="Incorrect demo password.";
+  // DEMO PASSWORD ONLY. USE SERVER AUTHENTICATION IN PRODUCTION.
+  if(document.getElementById("adminPassword").value!=="BPSADMIN"){
+   document.getElementById("loginMessage").innerText="Incorrect admin password.";
    return;
   }
   currentRole="admin";
-  openDashboard("Administrator");
+  openDashboard("Super Admin");
  }else{
-  const name=document.getElementById("staffName").value.trim();
-  const key=document.getElementById("staffKey").value.trim().toUpperCase();
+  let name=document.getElementById("staffName").value.trim();
+  let key=document.getElementById("staffKey").value.trim().toUpperCase();
 
-  const license=licenses.find(x=>x.key===key && x.status==="Active");
+  let found=licenses.find(x=>x.key===key&&x.status==="Active");
 
-  if(!license || !name){
+  if(!name||!found){
    document.getElementById("loginMessage").innerText="Invalid or inactive license.";
    return;
   }
-
-  if(license.staff.toLowerCase()!==name.toLowerCase()){
-   document.getElementById("loginMessage").innerText="License does not match this staff member.";
+  if(found.staff.toLowerCase()!==name.toLowerCase()){
+   document.getElementById("loginMessage").innerText="Staff name does not match license.";
    return;
   }
-
   currentRole="staff";
   openDashboard(name);
  }
@@ -307,17 +282,21 @@ function openDashboard(name){
 
  document.getElementById("app").style.display="block";
  document.getElementById("welcome").innerText="Welcome, "+name;
+
  document.getElementById("licenseTab").style.display=currentRole==="admin"?"block":"none";
- document.getElementById("staffTab").style.display="block";
  document.getElementById("generatePanel").style.display=currentRole==="admin"?"block":"none";
  document.getElementById("addStaffPanel").style.display=currentRole==="admin"?"block":"none";
 
+ document.getElementById("dashboardTab").style.display=currentRole==="admin"?"block":"none";
+ document.getElementById("dashboardMessage").innerText=
+ currentRole==="admin"?"Manage your staff and lifetime licenses here.":"You are logged in with an active lifetime license.";
+
  updateDashboard();
 
- if(currentRole==="staff"){
-  showTab("staff",document.getElementById("staffTab"));
+ if(currentRole==="admin"){
+  showTab("dashboard",document.getElementById("dashboardTab"));
  }else{
-  showTab("dashboard",document.querySelector("#tabs button"));
+  showTab("staff",document.getElementById("staffTab"));
  }
 }
 
@@ -326,7 +305,7 @@ function logout(){
  document.getElementById("app").style.display="none";
  document.querySelectorAll("body > header, body > section, body > footer")
  .forEach(x=>x.style.display="");
- document.getElementById("adminPass").value="";
+ document.getElementById("adminPassword").value="";
  document.getElementById("staffKey").value="";
 }
 
@@ -334,32 +313,38 @@ function showTab(id,button){
  document.querySelectorAll(".tab-content").forEach(x=>x.classList.add("hidden"));
  document.getElementById(id).classList.remove("hidden");
  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
- if(button)button.classList.add("active");
+ button.classList.add("active");
  updateDashboard();
 }
 
 function generateKey(){
- const name=document.getElementById("newStaffName").value.trim();
+ if(currentRole!=="admin")return;
+
+ let name=document.getElementById("newStaffName").value.trim();
  if(!name)return alert("Enter a staff name.");
 
- const random=()=>Math.random().toString(36).substring(2,6).toUpperCase();
- const key="BPS-"+random()+"-"+random()+"-"+random();
+ let random=()=>Math.random().toString(36).substring(2,6).toUpperCase();
+ let key="BPS-"+random()+"-"+random()+"-"+random();
 
  licenses.push({
-  key,staff:name,status:"Active",created:new Date().toISOString()
+  key:key,
+  staff:name,
+  type:"Lifetime",
+  status:"Active",
+  created:new Date().toISOString()
  });
 
- saveData("bps_licenses",licenses);
- document.getElementById("generated").innerText="Generated: "+key+" (Lifetime)";
+ save("bps_lifetime_licenses",licenses);
+
+ document.getElementById("generated").innerText="NEW KEY: "+key+" | LIFETIME";
  document.getElementById("newStaffName").value="";
- renderLicenses();
  updateDashboard();
 }
 
 function changeLicense(key,action){
  if(currentRole!=="admin")return;
 
- const item=licenses.find(x=>x.key===key);
+ let item=licenses.find(x=>x.key===key);
  if(!item)return;
 
  if(action==="revoke"){
@@ -367,82 +352,84 @@ function changeLicense(key,action){
   item.status="Revoked";
  }else if(action==="deactivate"){
   item.status="Inactive";
- }else if(action==="activate"){
+ }else{
   item.status="Active";
  }
 
- saveData("bps_licenses",licenses);
- renderLicenses();
+ save("bps_lifetime_licenses",licenses);
  updateDashboard();
 }
 
+function actionButton(parent,text,callback,danger){
+ let b=document.createElement("button");
+ b.className="small"+(danger?" danger":"");
+ b.textContent=text;
+ b.onclick=callback;
+ parent.appendChild(b);
+}
+
 function renderLicenses(){
- const rows=document.getElementById("licenseRows");
+ let rows=document.getElementById("licenseRows");
  rows.innerHTML="";
 
  licenses.forEach(item=>{
-  const tr=document.createElement("tr");
+  let tr=document.createElement("tr");
 
-  const values=[item.key,item.staff,item.status];
-  values.forEach(value=>{
-   const td=document.createElement("td");
+  [item.key,item.staff,item.type,item.status].forEach(value=>{
+   let td=document.createElement("td");
    td.textContent=value;
    tr.appendChild(td);
   });
 
-  const actions=document.createElement("td");
+  let td=document.createElement("td");
 
   if(currentRole==="admin"){
    if(item.status==="Active"){
-    addAction(actions,"Deactivate",()=>changeLicense(item.key,"deactivate"));
+    actionButton(td,"Deactivate",()=>changeLicense(item.key,"deactivate"));
    }else if(item.status==="Inactive"){
-    addAction(actions,"Activate",()=>changeLicense(item.key,"activate"));
+    actionButton(td,"Activate",()=>changeLicense(item.key,"activate"));
    }
-
    if(item.status!=="Revoked"){
-    addAction(actions,"Revoke",()=>changeLicense(item.key,"revoke"),true);
+    actionButton(td,"Revoke",()=>changeLicense(item.key,"revoke"),true);
    }
   }
-
-  tr.appendChild(actions);
+  tr.appendChild(td);
   rows.appendChild(tr);
  });
-}
-
-function addAction(parent,label,callback,danger=false){
- const button=document.createElement("button");
- button.className="small"+(danger?" danger":"");
- button.textContent=label;
- button.onclick=callback;
- parent.appendChild(button);
 }
 
 function addStaff(){
  if(currentRole!=="admin")return;
 
- const name=document.getElementById("addName").value.trim();
- const position=document.getElementById("addPosition").value.trim();
+ let name=document.getElementById("addName").value.trim();
+ let position=document.getElementById("addPosition").value.trim();
 
  if(!name||!position)return alert("Fill in both fields.");
 
  staff.push({name,position,status:"Active"});
- saveData("bps_staff",staff);
+ save("bps_staff_records",staff);
 
  document.getElementById("addName").value="";
  document.getElementById("addPosition").value="";
 
- renderStaff();
  updateDashboard();
 }
 
 function renderStaff(){
- const rows=document.getElementById("staffRows");
+ let rows=document.getElementById("staffRows");
  rows.innerHTML="";
 
- staff.forEach(person=>{
-  const tr=document.createElement("tr");
+ let visible=staff;
+
+ if(currentRole==="staff"){
+  visible=staff.filter(x=>x.name.toLowerCase()===
+  document.getElementById("welcome").innerText.replace("Welcome, ","").toLowerCase());
+ }
+
+ visible.forEach(person=>{
+  let tr=document.createElement("tr");
   [person.name,person.position,person.status].forEach(value=>{
-   const td=document.createElement("td");
+   let td=document.createElement("td");
    td.textContent=value;
    tr.appendChild(td);
   });
@@ -455,7 +442,6 @@ function updateDashboard(){
  document.getElementById("keyCount").innerText=licenses.length;
  document.getElementById("activeCount").innerText=
  licenses.filter(x=>x.status==="Active").length;
-
  renderLicenses();
  renderStaff();
 }
